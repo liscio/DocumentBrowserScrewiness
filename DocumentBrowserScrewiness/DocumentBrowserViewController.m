@@ -73,18 +73,30 @@
 - (void)presentDocumentAtURL:(NSURL *)documentURL {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    Document *document = [[Document alloc] initWithFileURL:documentURL];
+
+#if 1
     DocumentViewController *documentViewController = [storyBoard instantiateViewControllerWithIdentifier:@"DocumentViewController"];
-    documentViewController.document = [[Document alloc] initWithFileURL:documentURL];
+    documentViewController.document = document;
     
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:documentViewController];
-    nc.modalPresentationStyle = UIModalPresentationFullScreen;
+    documentViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     
-    UIViewController *vcToPresent = nc;
+    UIViewController *vcToPresent = documentViewController;
+#else
+    UINavigationController *documentNav = [storyBoard instantiateViewControllerWithIdentifier:@"DocumentNav"];
+    [documentNav loadViewIfNeeded];
+    
+    [(DocumentViewController *)(documentNav.topViewController) setDocument:document];
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:documentViewController];
+
+    
+    UIViewController *vcToPresent = documentNav;
+#endif
     
     [self presentViewController:vcToPresent animated:YES completion:^{
 //        NSLog(@"The nav controller is %@, doc VC is %@", nc, documentViewController);
         NSLog(@"The presented VC's nextResponder is %@", vcToPresent.nextResponder);
-        NSLog(@"The document VC's nextResponder is %@", documentViewController.nextResponder);
+//        NSLog(@"The document VC's nextResponder is %@", documentViewController.nextResponder);
     }];
 }
 

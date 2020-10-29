@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="26" y="654"/>
         </scene>
-        <!--Document View Controller-->
+        <!--Document-->
         <scene sceneID="dkP-xk-x6W">
             <objects>
-                <viewController storyboardIdentifier="DocumentViewController" id="M2k-L8-Olo" customClass="DocumentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentViewController" title="Document" id="M2k-L8-Olo" customClass="DocumentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SIE-Uh-Zny">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,11 +74,23 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-fy-ytf">
+                                <rect key="frame" x="0.0" y="44" width="375" height="198.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">This view controller has defined command-F and command-G keyCommands. When you use them, the 'Command' label below changes temporarily to indicate the command is working. If you tap 'Present Popover' and interact with the UITextField in the 3rd row, the keyCommands no longer function afterwards.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BoZ-jc-2Y8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2l7-xg-u1v" firstAttribute="top" secondItem="ekP-fy-ytf" secondAttribute="bottom" id="3pv-9Y-gmn"/>
+                            <constraint firstItem="ekP-fy-ytf" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" id="5y4-5u-fQk"/>
+                            <constraint firstItem="ekP-fy-ytf" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" id="Tz1-lc-uRL"/>
                             <constraint firstItem="2l7-xg-u1v" firstAttribute="centerX" secondItem="SIE-Uh-Zny" secondAttribute="centerX" id="UUS-kO-C91"/>
+                            <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="ekP-fy-ytf" secondAttribute="trailing" id="rRl-wx-xHc"/>
                             <constraint firstItem="2l7-xg-u1v" firstAttribute="centerY" secondItem="SIE-Uh-Zny" secondAttribute="centerY" id="yEe-m6-dL4"/>
                         </constraints>
                     </view>
@@ -90,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rl9-ES-qQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="591"/>
+            <point key="canvasLocation" x="696.79999999999995" y="-514.09295352323841"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="JKl-bx-Bk6">
@@ -173,8 +185,27 @@
             </objects>
             <point key="canvasLocation" x="1800.8" y="750.67466266866575"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aSQ-IZ-agn">
+            <objects>
+                <navigationController storyboardIdentifier="DocumentNav" modalPresentationStyle="fullScreen" id="zLp-a4-zFl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M13-CO-udO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="M2k-L8-Olo" kind="relationship" relationship="rootViewController" id="vNj-Dc-dNi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4nI-5W-ihq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-137" y="-514"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
